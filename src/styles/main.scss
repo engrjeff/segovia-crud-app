@@ -1,0 +1,193 @@
+@import "./bootstrap.min.css";
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
+}
+
+.btn-sm {
+  font-size: 13px;
+}
+
+// component styles
+
+// user/profile Details Container
+.profile-container {
+  height: 500px;
+  width: 80%;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 8px;
+  padding: 40px;
+  margin: 0 auto;
+  gap: 40px;
+
+  > img {
+    border-radius: 8px;
+  }
+
+  &-details {
+    padding: 20px 40px;
+
+    > p {
+      text-transform: uppercase;
+      margin-bottom: 0;
+
+      &:nth-child(2) {
+        font-weight: bold;
+      }
+    }
+
+    > h1 {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 60px;
+    }
+  }
+}
+
+// 404
+.not-found {
+  width: 80%;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 8px;
+  padding: 40px;
+  margin: 0 auto;
+
+  h1 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 60px;
+  }
+}
+
+// USERS
+
+// Heading
+.users-heading {
+  display: flex;
+  align-items: center;
+
+  > button,
+  a.btn {
+    margin-left: auto;
+  }
+}
+
+// Table
+.table-fixed-scrollable {
+  overflow: auto;
+  height: 380px;
+
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,
+  td {
+    padding: 8px 16px;
+  }
+  th {
+    background: #343a40;
+  }
+
+  th,
+  td {
+    vertical-align: middle;
+  }
+  button,
+  a.btn {
+    margin-left: 10px;
+  }
+}
+
+// User
+.user-avatar {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 3px solid transparent;
+
+  &:hover {
+    transform: translateY(-3px);
+    border: 3px solid #40a262;
+  }
+}
+
+// Modal
+.app-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  display: block;
+
+  .modal-fade-in {
+    transform: translateY(0);
+    animation: fadein 0.2s ease-in forwards;
+  }
+
+  .delete-img {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+// Loading Spinner
+.app-loading-spinner {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+
+  &::after {
+    content: "";
+    width: 60px;
+    height: 60px;
+    border-top: 5px solid #343a40;
+    border-right: 5px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
