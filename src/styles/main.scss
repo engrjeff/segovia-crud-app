@@ -114,6 +114,23 @@ body {
   a.btn {
     margin-left: 10px;
   }
+
+  .empty-div {
+    height: 300px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    h1 {
+      color: #ccc;
+      font-size: 40px;
+    }
+  }
 }
 
 // User

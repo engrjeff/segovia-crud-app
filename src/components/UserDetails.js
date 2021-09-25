@@ -36,7 +36,7 @@ function UserDetails() {
           <p className='text-info fw-bold'>{selectedUser.email}</p>
         </div>
         <Link to='/users' className='btn btn-primary btn-sm'>
-          Back to Users
+          Back to Users List
         </Link>
       </div>
     </div>

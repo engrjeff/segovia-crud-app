@@ -38,7 +38,11 @@ function Users(props) {
       <div className='users-heading'>
         <div>
           <h3 className='mb-0'>Users</h3>
-          <p className='mb-0'>{users.length} Rows</p>
+          {users.length > 0 && (
+            <p className='mb-0'>
+              {users.length} {users.length > 1 ? "Rows" : "Row"}
+            </p>
+          )}
         </div>
         <Link
           type='button'

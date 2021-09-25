@@ -12,9 +12,9 @@ function TableBody({ data, columns, onRowClick }) {
 
   function handleRowClick(e, item) {
     if (!e.target.localName === "a") return;
-    console.log(e.target.localName);
     if (onRowClick) onRowClick(item);
   }
+
   return (
     <tbody>
       {data &&
