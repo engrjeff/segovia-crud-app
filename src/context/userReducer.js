@@ -1,4 +1,5 @@
 export const initialState = {
+  toast: { shown: false, message: "" },
   isLoading: false,
   error: null,
   users: [],
@@ -22,6 +23,11 @@ const userReducer = (state, action) => {
         ...state,
         isLoading: false,
         error: action.error,
+      };
+    case "MANAGE_TOAST":
+      return {
+        ...state,
+        toast: action.payload,
       };
     case "GET_USERS":
       return {

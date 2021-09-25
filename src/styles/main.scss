@@ -192,6 +192,25 @@ body {
   }
 }
 
+// toast
+.app-toast {
+  position: absolute;
+  top: 0;
+  right: -80px;
+  background-color: #40a262;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 3px;
+  box-shadow: 0 0 20px #ccc;
+  transform: translateX(0);
+  animation: slideup 0.2s ease-in;
+  min-width: 220px;
+
+  > p {
+    margin-bottom: 0;
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -206,5 +225,14 @@ body {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes slideup {
+  from {
+    transform: translateX(30px);
+  }
+  to {
+    transform: translateX(0);
   }
 }

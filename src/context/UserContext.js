@@ -11,6 +11,7 @@ export const useUsers = () => useContext(UserContext);
 
 function UserContextProvider({ children }) {
   const [state, dispatch] = useReducer(userReducer, initialState);
+  const { users, isLoading, toast, error } = state;
 
   const executeFetch = async (url, options, actionType) => {
     dispatch({
@@ -40,6 +41,18 @@ function UserContextProvider({ children }) {
     getUsers();
   }, []);
 
+  // For showing/hiding toast
+  function manageToast(message) {
+    dispatch({ type: "MANAGE_TOAST", payload: { shown: true, message } });
+
+    setTimeout(() => {
+      dispatch({
+        type: "MANAGE_TOAST",
+        payload: { shown: false, message: "" },
+      });
+    }, 3000);
+  }
+
   // Get Users
   function getUsers() {
     executeFetch(`${apiEndpoint}?page=1`, {}, "GET_USERS");
@@ -56,6 +69,9 @@ function UserContextProvider({ children }) {
     };
 
     executeFetch(apiEndpoint, options, "CREATE_USER");
+
+    // show toast
+    manageToast("User was created successfully!");
   }
 
   // Update User
@@ -70,6 +86,9 @@ function UserContextProvider({ children }) {
     };
 
     executeFetch(url, options, "UPDATE_USER");
+
+    // show toast
+    manageToast("User was updated successfully!");
   }
 
   // Delete User
@@ -85,11 +104,16 @@ function UserContextProvider({ children }) {
       type: "DELETE_USER",
       payload: id,
     });
+
+    // show toast
+    manageToast("User was deleted successfully!");
   }
 
   const value = {
-    users: state.users,
-    isLoading: state.isLoading,
+    users,
+    error,
+    toast,
+    isLoading,
     createUser,
     updateUser,
     deleteUser,
